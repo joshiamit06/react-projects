@@ -1,0 +1,16 @@
+.heading{
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.calInputBox {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #e9ecef; /* Light grey to indicate read-only */
+    color: #495057; /* Text color */
+    pointer-events: none; /* Disable user interactions */
+  }

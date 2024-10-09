@@ -1,0 +1,23 @@
+.calcButton {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px; /* Rounded corners */
+    margin: 8px;
+    padding: 8px;
+    font-size: 1.5rem;
+    background-color: #007bff; /* Bootstrap primary button color */
+    color: white;
+    border: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .buttonContainer {
+    display: flex;
+    flex-wrap: wrap; /* Ensure buttons wrap */
+    justify-content: center; /* Center buttons in container */
+    gap: 6px; /* Space between buttons */
+  }
