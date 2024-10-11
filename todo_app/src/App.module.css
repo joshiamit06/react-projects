@@ -1,0 +1,17 @@
+.todoContainer {
+    width: 100%;
+    max-width: 400px; /* Set a maximum width for the container */
+    height: 500px; /* Fixed height for the container */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    background-color: #f8f9fa; /* Light background color */
+  }
+
+  .centerWindow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+  }

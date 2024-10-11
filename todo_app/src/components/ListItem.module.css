@@ -1,0 +1,26 @@
+.listItem {
+    display: flex; /* Align items horizontally */
+    justify-content: space-between; /* Spread content to left and right */
+    align-items: center; /* Vertically center items */
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding inside the item */
+    margin-bottom: 10px; /* Space between items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    font-size: 1rem; /* Font size */
+  }
+
+  .deleteButton {
+    background-color: #dc3545; /* Red background for delete button */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 3px; /* Slight rounding of corners */
+    padding: 5px 10px; /* Padding for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.2s; /* Smooth hover transition */
+  }
+  
+  .deleteButton:hover {
+    background-color: #c82333; /* Darker red on hover */
+  }

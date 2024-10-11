@@ -1,0 +1,39 @@
+.inputContainer {
+    display: flex; /* Use flexbox to align items */
+    margin-bottom: 20px; /* Space between input and todo items */
+  }
+
+
+  .inputField {
+    flex: 1; /* Allow input field to grow */
+    padding: 10px; /* Inner padding */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Font size */
+    margin-right: 10px; /* Space between input and button */
+  }
+  
+  .inputField:focus {
+    border-color: #007bff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle shadow effect */
+  }
+
+
+  .submitbutton {
+    padding: 10px 20px; /* Padding for size */
+    background-color: #007bff; /* Primary blue background */
+    color: white; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Font size */
+    font-weight: 500; /* Medium weight for a professional look */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth transition */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  }
+  
+  .button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+  }

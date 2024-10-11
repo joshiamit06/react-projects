@@ -1,0 +1,9 @@
+.header {
+    background-color: #007bff; /* Bootstrap primary color or choose a professional color */
+    color: white; /* Text color */
+    text-align: center; /* Center the text */
+    padding: 20px; /* Space around the text */
+    border-radius: 10px 10px 0 0; /* Rounded corners for the top */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    font-size: 1.5rem; /* Font size for the heading */
+  }
