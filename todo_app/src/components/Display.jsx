@@ -1,21 +1,23 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import styles from './Display.module.css'
 
 function Display({addNewItem}){
-    const [toDoName, setToDoName] = useState()
 
-    const handleNameChange = (e) => {
-        setToDoName(e.target.value)
-    }
-    const handleOnSubmit = () => {
-        addNewItem(toDoName)
-        setToDoName("")
+    const toDoRefElement = useRef();
+
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        const toDoName = toDoRefElement.current.value;
+        toDoRefElement.current.value = "";
+        addNewItem(toDoName);
     }
 
     return(
         <div className={styles.inputContainer}>
-            <input type="text" className={styles.inputField} id="" value={toDoName} onChange={handleNameChange} />
-            <button className={styles.submitbutton} onClick={handleOnSubmit}>Submit</button>
+            <form onSubmit={handleOnSubmit}>
+                <input type="text" className={styles.inputField} id="" ref={toDoRefElement} />
+                <button className={styles.submitbutton}>Submit</button>
+            </form>
         </div>
 
     )

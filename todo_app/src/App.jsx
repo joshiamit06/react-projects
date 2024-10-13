@@ -7,8 +7,10 @@ import styles from './App.module.css';
 function App() {
   const [toDoItems, setToDoItems] = useState([])
   const addNewItem = (newItem)=>{
-      const newToDoListItems = [...toDoItems,newItem]
-      setToDoItems(newToDoListItems)
+      setToDoItems((currVal) =>{
+        const newToDoListItems = [...currVal,newItem]
+        return newToDoListItems
+      })
       
   }
 
