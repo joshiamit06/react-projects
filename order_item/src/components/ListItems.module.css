@@ -1,0 +1,18 @@
+.listContainer {
+    display: flex;
+    border-radius: 8px; /* Rounded corners for the list container */
+    background-color: #f9f9f9; /* Faint background color */
+    width: 100%;
+  }
+  
+.listItem {
+display: flex;
+color: #333;
+border: 1px solid #ddd; /* Light border for individual items */
+border-radius: 4px; /* Rounded corners for each item */
+margin-bottom: 5px; /* Space between list items */
+background-color: #ffffff; /* White background for items */
+width: 100%;
+}
+  
+  
