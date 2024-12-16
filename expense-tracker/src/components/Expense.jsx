@@ -1,4 +1,6 @@
 import styles from "./Expense.module.css";
+import { MdDelete } from "react-icons/md";
+
 
 function Expense({ expenses, handleDeleteExpense }) {
 
@@ -14,7 +16,7 @@ function Expense({ expenses, handleDeleteExpense }) {
               <span className={styles.expenseAmount}>{expense.amount}</span>
               <span className={styles.expenseDate}>{expense.date}</span>
               <button className={styles.deleteButton} onClick={()=>handleDeleteExpense(expense)}>
-                Delete
+              <MdDelete />
               </button>
             </div>
           ))}
