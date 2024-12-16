@@ -1,0 +1,46 @@
+.addExpenseRow {
+  display: flex; /* Arrange items in a row */
+  justify-content: space-between; /* Add space between elements */
+  align-items: center; /* Align items vertically in the center */
+  gap: 10px; /* Add spacing between the elements */
+  margin: 10px 0; /* Add some spacing around the row */
+  width: 100%; /* Ensure the row stretches to the container width */
+  flex-wrap: wrap; /* Wrap items to the next row if they overflow */
+  box-sizing: border-box; /* Include padding and borders in width calculation */
+}
+
+.expenseInput {
+  padding: 8px; /* Add padding inside input fields */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 5px; /* Round the corners */
+  flex: 1; /* Make inputs flexible in size */
+  max-width: 200px; /* Restrict the maximum width */
+  box-sizing: border-box; /* Include padding and borders in width calculation */
+}
+
+.expenseInputAmount,
+.expenseInputDate {
+  max-width: 150px; /* Restrict width for smaller inputs */
+  padding: 8px; /* Add padding inside input fields */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 5px; /* Round the corners */
+  box-sizing: border-box; /* Include padding and borders in width calculation */
+}
+
+.expenseInputButton {
+  padding: 8px 15px; /* Add padding to the button */
+  background-color: #4caf50; /* Green background */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Round the corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+  flex-shrink: 0; /* Prevent shrinking */
+  min-width: 100px; /* Ensure a minimum width */
+  text-align: center; /* Center-align button text */
+  box-sizing: border-box; /* Include padding and borders in width calculation */
+}
+
+.expenseInputButton:hover {
+  background-color: #45a049; /* Darker green on hover */
+}

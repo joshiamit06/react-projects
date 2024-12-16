@@ -1,0 +1,61 @@
+/* Container for the list of expenses */
+.expenseList {
+    margin-top: 20px; /* Add spacing above the list */
+    width: 100%; /* Full width of the container */
+    padding: 10px; /* Add padding inside the list */
+    background-color: #fff; /* White background for better contrast */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  /* Individual expense item */
+  .expenseItem {
+    display: grid; /* Use grid layout for better alignment */
+    grid-template-columns: 2fr 1fr 1fr auto; /* Define column sizes */
+    gap: 10px; /* Add spacing between the columns */
+    align-items: center; /* Center items vertically */
+    padding: 4px 0; /* Vertical padding between items */
+    border-bottom: 1px solid #eee; /* Separator between items */
+}
+  
+  /* Remove bottom border for the last item */
+  .expenseItem:last-child {
+    border-bottom: none;
+  }
+  
+  /* Styling for expense name, amount, and date */
+  .expenseName {
+    flex: 2; /* Occupy more space for the name */
+    font-weight: bold; /* Make the name bold */
+    text-align: left;
+  }
+  
+  .expenseAmount {
+    flex: 1; /* Smaller space for the amount */
+    text-align: center; /* Align amount to the right */
+    color: #4caf50; /* Green color for amount */
+    font-weight: bold;
+  }
+  
+  .expenseDate {
+    flex: 1; /* Smaller space for the date */
+    text-align: center; /* Align date to the right */
+    color: #888; /* Gray color for date */
+  }
+  
+
+  .deleteButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    color: white;
+    background-color: #e63946;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .deleteButton:hover {
+    background-color: #d62828;
+  }
