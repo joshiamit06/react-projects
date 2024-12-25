@@ -1,43 +1,75 @@
-import { createContext, useState } from "react";
+import { useReducer } from "react";
+import { createContext } from "react";
 
-export const ExpenseTrackerContext = createContext()
+export const ExpenseTrackerContext = createContext();
 
-const ExpenseTrackerContextProvider = ({children}) => {
-    const [expenses, setExpenses] = useState([]);
-    const [totalExpenses, setTotalExpenses] = useState();
-  
-    let handleTotalExpenses = (newExpenseList) => {
-      setTotalExpenses(() => {
-        let totalSum = newExpenseList.reduce(
-          (sum, curr) => Number(sum) + Number(curr.amount),
-          0
-        );
-        console.log("totalsum", totalSum);
-        return totalSum;
-      });
+const ExpenseReducer = (state, action) => {
+  if (action.type === "ADD_EXPENSE") {
+    const newExpenses = [
+      ...state.expenses,
+      {
+        name: action.payload.name,
+        amount: action.payload.amount,
+        date: action.payload.date,
+      },
+    ];
+    const totalExpenses = newExpenses.reduce(
+      (sum, curr) => Number(sum) + Number(curr.amount),
+      0
+    );
+    return { expenses: newExpenses, totalExpenses };
+  } else if (action.type === "DELETE_EXPENSE") {
+    const newExpenses = state.expenses.filter(
+      (expense) => expense !== action.payload.name
+    );
+    const totalExpenses = newExpenses.reduce(
+      (sum, curr) => Number(sum) + Number(curr.amount),
+      0
+    );
+    return { expenses: newExpenses, totalExpenses };
+  } else {
+    return state;
+  }
+};
+
+const ExpenseTrackerContextProvider = ({ children }) => {
+  const initialState = { expenses: [], totalExpenses: 0 };
+  const [state, dispachExpense] = useReducer(ExpenseReducer, initialState);
+
+  function handleAddExpenses(name, amount, date) {
+    const AddExpenseAction = {
+      type: "ADD_EXPENSE",
+      payload: {
+        name: name,
+        amount: amount,
+        date: date,
+      },
     };
-  
-    function handleAddExpenses(name, amount, date) {
-      setExpenses(() => {
-        const newExpenseList = [
-          ...expenses,
-          { name: name, amount: amount, date: date },
-        ];
-        handleTotalExpenses(newExpenseList);
-        return newExpenseList;
-      });
-    }
-  
-    const handleDeleteExpense = (expenseToDelete)=>{
-      const newExpenseList = expenses.filter((expense) => expense !== expenseToDelete);
-      setExpenses(newExpenseList);
-      handleTotalExpenses(newExpenseList);
-    }
-  
-return (
-    <ExpenseTrackerContext.Provider value={{handleAddExpenses,expenses, totalExpenses, handleDeleteExpense}}>
-        {children}
+    dispachExpense(AddExpenseAction);
+  }
+
+  const handleDeleteExpense = (expenseToDelete) => {
+    const deleteExpenseAction = {
+      type: "DELETE_EXPENSE",
+      payload: {
+        name: expenseToDelete,
+      },
+    };
+    dispachExpense(deleteExpenseAction);
+  };
+
+  return (
+    <ExpenseTrackerContext.Provider
+      value={{
+        handleAddExpenses,
+        expenses: state.expenses,
+        totalExpenses: state.totalExpenses,
+        handleDeleteExpense,
+      }}
+    >
+      {children}
     </ExpenseTrackerContext.Provider>
-)
-}
-export default ExpenseTrackerContextProvider
+  );
+};
+
+export default ExpenseTrackerContextProvider;
