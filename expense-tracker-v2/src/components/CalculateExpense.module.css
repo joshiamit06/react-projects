@@ -1,0 +1,24 @@
+
+.calculateExpense {
+    position: absolute; 
+    bottom: 10px; /* Place it 20px above the bottom edge */
+    right: 10px; /* Place it 20px from the right edge */
+    padding: 10px 10px; /* Add padding inside the box */
+    background-color: #4caf50; /* Green background for visibility */
+    color: white; /* White text for contrast */
+    font-weight: bold; /* Bold text for emphasis */
+    font-size: 10px; /* Slightly larger font size */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover *x/
+    z-index: 10; /* Ensure it appears above other content */
+    text-align: center; /* Center text alignment */
+    min-width: 10px; /* Ensure consistent size for the box */
+  }
+  
+  /* Hover effect */
+  .calculateExpense:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+  }
+  
