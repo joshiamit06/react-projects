@@ -6,20 +6,20 @@ const CreatePost = () => {
     const {setCreateNewPost} = useContext(SocialMediaContext)
 
     const titleElement = useRef()
-    const contentElement = useRef()
+    const bodyElement = useRef()
     const reactionsElement = useRef()
     const tagsElement = useRef()
     
     const handleSubmit = (e) =>{
         e.preventDefault();
         const title = titleElement.current.value
-        const content = contentElement.current.value
+        const body = bodyElement.current.value
         const reactions = reactionsElement.current.value
         const tags = tagsElement.current.value.split(" ")
         const id = Date.now()
-        setCreateNewPost({id, title,content,reactions,tags})
+        setCreateNewPost({id, title,body,reactions,tags})
         titleElement.current.value = ""
-        contentElement.current.value = ""
+        bodyElement.current.value = ""
         reactionsElement.current.value = ""
         tagsElement.current.value = ""
     }
@@ -31,7 +31,7 @@ const CreatePost = () => {
     </div>
     <div className="mb-3">
         <label htmlFor="body" className="form-label">Post Content</label>
-        <textarea rows="4" type="text"  ref={contentElement} className="form-control" id="body" placeholder="Tell us more about it."/>
+        <textarea rows="4" type="text"  ref={bodyElement} className="form-control" id="body" placeholder="Tell us more about it."/>
     </div>
     <div className="mb-3">
         <label htmlFor="reactions" className="form-label">Number of reactions</label>

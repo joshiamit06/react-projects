@@ -5,7 +5,7 @@ import { MdDelete } from "react-icons/md";
 const PostList = () => {
   const { posts, deletePost } = useContext(SocialMediaContext);
   return (
-    <div className="post-list-container">
+    <div className="post-list-container" key={posts.id}>
       {posts.length === 0 ? (
         <div className="empty-message">
           <p>No posts to display. Create a new post!</p>
@@ -21,7 +21,7 @@ const PostList = () => {
               >
                 <MdDelete />
               </span>
-              <p className="card-text">{post.content}</p>
+              <p className="card-text">{post.body}</p>
               {post.tags.map((tag) => (
                 <span key={tag} className="badge text-bg-primary hashtag">
                   {tag}
