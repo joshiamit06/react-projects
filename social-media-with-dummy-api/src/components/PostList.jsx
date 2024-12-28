@@ -1,21 +1,46 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SocialMediaContext } from "../store/social-media-store";
 import { MdDelete } from "react-icons/md";
 import WelcomeMessage from "./WelcomeMessage";
+import LoadingSpinner from "./LoadingSpinner";
 
 const PostList = () => {
   const { addPostsInBulk, posts, deletePost } = useContext(SocialMediaContext);
+  const [fetching, setFetching] = useState(false)
 
-  const handleDummyData = () => {
-    fetch("https://dummyjson.com/posts")
-      .then((res) => res.json())
-      .then((data) => addPostsInBulk(data.posts));
-  };
+  useEffect(() => {
+    setFetching(true);
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    fetch("https://dummyjson.com/posts", { signal })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch posts");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        addPostsInBulk(data.posts);
+        setFetching(false);
+      })
+      .catch((error) => {
+        if (error.name !== "AbortError") {
+          console.error("Fetch error:", error.message);
+        }
+      })
+
+    return () => {
+      controller.abort();
+    };
+  }, []);
+
 
   return (
     <div className="post-list-container" key={posts.id}>
-      {posts.length === 0 ? (
-        <WelcomeMessage handleDummyData={handleDummyData} />
+      {fetching && <LoadingSpinner/>}
+      {!fetching && (posts.length === 0 ? (
+        <WelcomeMessage/>
       ) : (
         posts.map((post) => (
           <div className="card post-card" style={{ width: "25rem" }}>
@@ -45,7 +70,7 @@ const PostList = () => {
             </div>
           </div>
         ))
-      )}
+      ))}
     </div>
   );
 };
