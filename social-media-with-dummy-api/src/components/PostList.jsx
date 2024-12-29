@@ -5,35 +5,7 @@ import WelcomeMessage from "./WelcomeMessage";
 import LoadingSpinner from "./LoadingSpinner";
 
 const PostList = () => {
-  const { addPostsInBulk, posts, deletePost } = useContext(SocialMediaContext);
-  const [fetching, setFetching] = useState(false)
-
-  useEffect(() => {
-    setFetching(true);
-    const controller = new AbortController();
-    const signal = controller.signal;
-
-    fetch("https://dummyjson.com/posts", { signal })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed to fetch posts");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        addPostsInBulk(data.posts);
-        setFetching(false);
-      })
-      .catch((error) => {
-        if (error.name !== "AbortError") {
-          console.error("Fetch error:", error.message);
-        }
-      })
-
-    return () => {
-      controller.abort();
-    };
-  }, []);
+  const { fetching, posts, deletePost } = useContext(SocialMediaContext);
 
 
   return (
@@ -52,6 +24,7 @@ const PostList = () => {
               >
                 <MdDelete />
               </span>
+              <span className="user-id-badge">User ID: {post.userId}</span>
               <p className="card-text">{post.body}</p>
               {post.tags.map((tag) => (
                 <span key={tag} className="badge text-bg-primary hashtag">

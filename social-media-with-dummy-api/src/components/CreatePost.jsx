@@ -4,6 +4,7 @@ import { SocialMediaContext } from "../store/social-media-store";
 const CreatePost = () => {
   const { setCreateNewPost } = useContext(SocialMediaContext);
 
+  const userIdElement = useRef()
   const titleElement = useRef();
   const bodyElement = useRef();
   const reactionsElement = useRef();
@@ -11,6 +12,7 @@ const CreatePost = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const userId = userIdElement.current.value;
     const title = titleElement.current.value;
     const body = bodyElement.current.value;
     const reactions = {
@@ -19,7 +21,27 @@ const CreatePost = () => {
     };
     const tags = tagsElement.current.value.split(" ");
     const id = Date.now();
-    setCreateNewPost({ id, title, body, reactions, tags });
+
+
+    fetch('https://dummyjson.com/posts/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        title: title,
+        userId: userId,
+        body: body,
+        reactions: {
+          likes:reactions.likes,
+          dislikes:reactions.dislikes
+        },
+        tags:tags
+      })
+    })
+    .then(res => res.json())
+    .then(post =>setCreateNewPost(post) );
+
+    setCreateNewPost({ userId, id, title, body, reactions, tags });
+    userIdElement.current.value = "";
     titleElement.current.value = "";
     bodyElement.current.value = "";
     reactionsElement.current.likes.value = "";
@@ -29,6 +51,16 @@ const CreatePost = () => {
   return (
     <form className="create-post" onSubmit={handleSubmit}>
       <div className="mb-3">
+      <label htmlFor="userId" className="form-label">
+          User Id
+        </label>
+        <input
+          type="text"
+          ref={userIdElement}
+          className="form-control"
+          id="userId"
+          placeholder="Enter your user id here."
+        />
         <label htmlFor="title" className="form-label">
           Post Title
         </label>
