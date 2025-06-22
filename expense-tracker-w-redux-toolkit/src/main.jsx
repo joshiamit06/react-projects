@@ -1,14 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
-import 'bootstrap/dist/css/bootstrap.css';
-import counterStore from './store/index';
-import { Provider } from 'react-redux';
-
+import { Provider } from 'react-redux'
+import expensesStore from './store'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Provider store = {counterStore}>
+    <Provider store={expensesStore}>
     <App />
     </Provider>
   </StrictMode>,
